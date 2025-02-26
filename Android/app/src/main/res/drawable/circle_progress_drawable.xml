@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 배경 원: 항상 꽉 찬 회색 원 -->
+    <item android:id="@android:id/background">
+        <shape
+            android:shape="ring"
+            android:useLevel="false"
+            android:thicknessRatio="16"
+            android:innerRadiusRatio="3">
+            <solid android:color="#e0e0e0" />
+        </shape>
+    </item>
+
+    <!-- 프로그레스 원: 진행률에 따라 채워짐 -->
+    <item android:id="@android:id/progress">
+        <rotate
+            android:fromDegrees="270"
+            android:pivotX="50%"
+            android:pivotY="50%"
+            android:useLevel="true">
+            <shape
+                android:shape="ring"
+                android:thicknessRatio="16"
+                android:innerRadiusRatio="3">
+                <solid android:color="@color/primary_color" />  <!-- 원하는 색상으로 변경 -->
+            </shape>
+        </rotate>
+    </item>
+</layer-list>

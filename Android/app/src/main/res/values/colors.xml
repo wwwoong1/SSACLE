@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="gray">#9A9A9A</color>
+    <color name="light_gray">#D9D9D9</color>
+    <color name="chat_blue">#369BFF</color>
+    <color name="chat_received">#F4F4F4</color>
+    <color name="blue_ai">#0074BD</color>
+    <color name="logo_blue">#0084BD</color>
+
+    <!--파이차트 color-->
+    <color name="chart_red">#FE438A</color>
+    <color name="chart_blue">#4375FE</color>
+    <color name="chart_green">#43FE46</color>
+    <color name="face_chart_plus">#FEE500</color>
+    <color name="face_chart_minus">#FE438A</color>
+    <color name="face_chart_middle">#369BFF</color>
+
+    <!--cardView color-->
+    <color name="card_white">#FFFFFF</color>
+    <color name="card_eye">#6DCEF5</color>
+    <color name="card_face">#DE3B4E</color>
+
+    <color name="card_bg">#B5C0D0</color>
+    <!--button color-->
+    <color name="myself_button">#2F9EF4</color>
+    <color name="eye_button">#FE902F</color>
+    <color name="face_button">#000000</color>
+
+
+    <!--border-->
+    <color name="frontend_stack_default_border">#99CAEA</color>
+    <color name="backend_stack_default_border">#CAECBE</color>
+    <color name="mobile_stack_default_border">#B1F1CE</color>
+    <color name="ai_stack_default_border">#FFB4D0</color>
+    <color name="data_stack_default_border">#FFC6C0</color>
+    <color name="embaded_stack_default_border">#D7B9D5</color>
+    <color name="infra_stack_default_border">#ACD8FA</color>
+    <color name="cs_stack_default_border">#F4B6AC</color>
+    <color name="algo_stack_default_border">#CCAAF7</color>
+    <color name="game_stack_default_border">#CFCFCF</color>
+    <color name="etc_stack_default_border">#A7A7A7</color>
+
+    <!--choice-->
+    <color name="frontend_stack_tag">#017ACB</color>
+    <color name="backend_stack_tag">#7ACF5C</color>
+    <color name="mobile_stack_tag">#3DDC84</color>
+    <color name="ai_stack_tag">#FE438A</color>
+    <color name="data_stack_tag">#FF7062</color>
+    <color name="embaded_stack_tag">#9B4F96</color>
+    <color name="infra_stack_tag">#2F9EF4</color>
+    <color name="cs_stack_tag">#E3492F</color>
+    <color name="algo_stack_tag">#802BEC</color>
+    <color name="game_stack_tag">#888888</color>
+    <color name="etc_stack_tag">#222222</color>
+
+
+    <color name="primary_color">#369BFF</color>
+    <color name="topbar_text_color">#1181F0</color>
+    <color name="border_card_color">#BCBCBC</color>
+    <color name="textfile_placeholder_color">#BFBFBF</color>
+    <color name="textfile_border_color">#9D9D9D</color>
+    <color name="border_input_color">#888888</color>
+    <color name="border_light_color">#ECECEC</color>
+    <color name="textfield_success_text_color">#30AD27</color>
+    <color name="textfield_error_text_color">#FF7777</color>
+    <color name="textfield_stroke_color">#CDCDCD</color>
+
+    <color name="red">#FF0000</color>
+    <color name="red_light">#E46C7A</color>
+    <color name="green_light">#94CB78</color>
+
+</resources>

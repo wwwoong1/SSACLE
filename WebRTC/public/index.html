@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebRTC 화상 회의</title>
+    <style>
+      .video-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1rem;
+        padding: 1rem;
+        max-width: calc(100% - 320px); /* 채팅창과 겹치지 않도록 오른쪽 여백 확보 */
+        transition: max-width 0.3s ease; /* 애니메이션 효과 */
+      }
+      .video-wrapper {
+        position: relative;
+        aspect-ratio: 16/9;
+        background: #000;
+      }
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .controls {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 1rem;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 1rem;
+        border-radius: 8px;
+      }
+      button {
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        border: none;
+        background: #2196f3;
+        color: white;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #1976d2;
+      }
+      button.danger {
+        background: #f44336;
+      }
+      button.danger:hover {
+        background: #d32f2f;
+      }
+      .chat-container {
+        position: fixed;
+        right: 20px;
+        top: 20px;
+        width: 300px;
+        max-height: 500px;
+        background: rgba(255, 255, 255, 0.95);
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        display: none; /* ✅ 기본적으로 숨김 */
+        flex-direction: column;
+        z-index: 10; /* ✅ 비디오보다 위로 */
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      .chat-messages {
+        flex: 1;
+        padding: 10px;
+        overflow-y: auto;
+        border-bottom: 1px solid #ccc;
+        height: 250px; /* ✅ 고정 높이 설정 */
+      }
+      .chat-input {
+        display: flex;
+      }
+      .chat-input input {
+        flex: 1;
+        padding: 8px;
+        border: none;
+        border-top: 1px solid #ccc;
+        outline: none;
+      }
+      .chat-input button {
+        border: none;
+        padding: 8px 12px;
+        background: #2196f3;
+        color: white;
+        cursor: pointer;
+      }
+      .room-list-container h3,
+      .room-create-container h3 {
+        margin-top: 5px;
+      }
+      .room-list-container ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .room-list-container li {
+        padding: 5px;
+        cursor: pointer;
+      }
+      .room-list-container li:hover {
+        background: #f0f0f0;
+      }
+      .room-list-container button {
+        margin-top: 10px;
+        width: 100%;
+      }
+      /* 방 목록과 방 생성 UI를 나란히 배치 */
+      .room-container {
+        position: fixed;
+        left: 20px;
+        top: 20px;
+        display: flex; /* 가로 정렬 */
+        gap: 10px; /* 간격 조절 */
+        align-items: flex-start; /* 방 목록이 커져도 방 생성 컨테이너 영향을 주지 않음 */
+      }
+      .room-list-container ul {
+        max-height: 300px; /* ✅ 최대 높이 설정 */
+        overflow-y: auto; /* ✅ 내부 스크롤 */
+      }
+      /* 방 목록과 방 생성 UI */
+      .room-list-container {
+        width: 200px;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 10px;
+      }
+      .room-create-container {
+        width: 200px;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 10px;
+      }
+      .room-create-container input {
+        width: 93%;
+        padding: 5px;
+        margin-bottom: 5px;
+      }
+      .room-create-container button {
+        width: 100%;
+      }
+      /* 제어 버튼 중 나가기 버튼은 초기 숨김 */
+      #leaveBtn {
+        display: none;
+      }
+      /* ✅ 화면이 작을 때 채팅창이 너무 크지 않도록 조정 */
+      @media (max-width: 900px) {
+        .video-container {
+          max-width: 100%; /* 작은 화면에서는 가득 차게 */
+        }
+
+        .chat-container {
+          width: 250px;
+          right: 10px;
+          top: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 비디오 스트림을 표시할 영역 -->
+    <div class="video-container" id="videoContainer"></div>
+
+    <!-- 채팅 UI (초기에는 숨김) -->
+    <div class="chat-container" id="chatContainer" style="display: none">
+      <div class="chat-messages" id="chatMessages"></div>
+      <div class="chat-input">
+        <input type="text" id="chatInput" placeholder="메시지를 입력하세요..." />
+        <button id="sendChatBtn">전송</button>
+      </div>
+    </div>
+
+    <!-- 방 목록과 방 생성 UI를 감싸는 컨테이너 -->
+    <div class="room-container">
+      <!-- 방 목록 UI (방 입장 전 보임) -->
+      <div class="room-list-container">
+        <h3>현재 방 목록</h3>
+        <ul id="roomList"></ul>
+        <button id="refreshRoomsBtn">새로고침</button>
+      </div>
+
+      <!-- 방 생성 UI (방 입장 전 보임) -->
+      <div class="room-create-container">
+        <h3>방 생성</h3>
+        <input type="text" id="roomInput" placeholder="방 이름 입력" />
+        <button id="createRoomBtn">방 생성</button>
+      </div>
+    </div>
+
+    <!-- 제어 버튼 (나가기 버튼은 초기 숨김) -->
+    <div class="controls" id="controlsContainer" style="display: none">
+      <button id="muteBtn" style="display: none">음소거</button>
+      <button id="videoBtn" style="display: none">비디오 끄기</button>
+      <button id="leaveBtn" class="danger" style="display: none">나가기</button>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/dist/bundle.js"></script>
+  </body>
+</html>

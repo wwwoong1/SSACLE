@@ -1,0 +1,33 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.FirstProject" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+    </style>
+
+    <style name="Theme.FirstProject" parent="Base.Theme.FirstProject" />
+
+    <style name="Toolbar.Title.Bold" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="NumberPickerStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="colorControlNormal">@color/primary_color</item>
+    </style>
+
+    <style name="topbar_textstyle">
+        <item name="fontFamily">@font/pretendard_bold</item>
+        <item name="android:textSize">22sp</item>
+        <item name="colorControlNormal">@color/primary_color</item>
+    </style>
+
+    <style name="Theme.FirstProject.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <item name="postSplashScreenTheme">@style/Theme.FirstProject</item>
+    </style>
+</resources>

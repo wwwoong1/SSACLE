@@ -1,0 +1,133 @@
+version: "3.8"
+
+services:
+  # 몽고DB
+  # .env
+  # MONGO_USERNAME=root
+  # MONGO_PASSWORD=password
+  # MONGO_DATABASE=mydatabase
+  mongodb:
+    image: mongo:8.0.4
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      # MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+      # MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+      # MONGO_INITDB_DATABASE: ${MONGO_DATABASE}
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: ssacle
+    volumes:
+      - mongodb_data:/data/db
+      - ./resources/mongodb-init.d:/docker-entrypoint-initdb.d # 초기 데이터 로드
+    networks:
+      - app-network
+
+  # 레디스
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+    command: redis-server --requirepass root --port 6379 --bind 0.0.0.0
+    volumes:
+      - ./redis-data:/data
+    networks:
+      app-network:
+        aliases:
+          - redis
+
+  # spring Backend
+  backend:
+    build:
+      context: ./BackEnd/ssacle
+      dockerfile: Dockerfile
+
+    container_name: spring
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./uploads:/app/uploads
+    depends_on:
+      - mongodb # 몽고db 먼저 실행되어야 함
+      - redis
+    restart: always
+    environment:
+      # SPRING_DATA_MONGODB_URI: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongodb:27017/${MONGO_DATABASE}
+
+      SPRING_DATA_MONGODB_URI: mongodb://root:password@mongodb:27017/ssacle?authSource=admin
+
+      SPRING_REDIS_HOST: redis
+      SPRING_REDIS_PORT: 6379
+      SPRING_REDIS_PASSWORD: root
+
+      # AWS S3 환경변수
+      # .env 파일로 환경변수 로드
+      # S3_BUCKET_NAME=my-s3-bucket
+      # CLOUD_AWS_ACCESS_KEY=AKIAXXXXXXX
+      # CLOUD_AWS_SECRET_KEY=XXXXXXXXXXXXXXXXXX
+
+      # S3_BUCKET_NAME: ${S3_BUCKET_NAME}
+      # CLOUD_AWS_ACCESS_KEY: ${CLOUD_AWS_ACCESS_KEY}
+      # CLOUD_AWS_SECRET_KEY: ${CLOUD_AWS_SECRET_KEY}
+
+    networks:
+      - app-network
+
+  webrtc:
+    build:
+      context: ./WebRTC
+      dockerfile: Dockerfile
+
+    container_name: webrtc
+    env_file:
+      - WebRTC/.env
+    ports:
+      - "4000:4000"
+      - "10000-10100:10000-10100/udp"
+      - "10000-10100:10000-10100/tcp"
+    depends_on:
+      - mongodb
+      - redis
+    restart: always
+    environment:
+      MONGO_URI: mongodb://root:password@mongodb:27017/ssacle?authSource=admin
+
+      # Redis 연결 정보
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: root
+
+      # WebSocket 서버 설정
+      WEBSOCKET_PORT: 4000
+      SIGNALING_SERVER: ws://webrtc:4000
+
+      NODE_ENV: production
+
+    networks:
+      - app-network
+  
+  chat:
+    build:
+      context: ./BackEnd/chat
+      dockerfile: Dockerfile
+    
+    container_name: chat
+    env_file:
+      - BackEnd/chat/.env
+    ports:
+      - "4001:4001"
+    depends_on:
+      - mongodb
+    restart: always
+
+    networks:
+      - app-network
+
+networks:
+  app-network:
+
+volumes:
+  jenkins_home:
+  mongodb_data:

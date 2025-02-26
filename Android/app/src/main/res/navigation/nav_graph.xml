@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.firstproject.ui.home.HomeFragment"
+        android:label="홈"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_studyRegisterFragment"
+            app:destination="@id/studyRegisterFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_videoFragment"
+            app:destination="@id/videoFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_studyNotificationFragment"
+            app:destination="@id/studyNotificationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.example.firstproject.ui.chat.ChatFragment"
+        android:label="채팅"
+        tools:layout="@layout/fragment_chat">
+        <action
+            android:id="@+id/action_chatFragment_to_chatDetailFragment"
+            app:destination="@id/chatDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/chatDetailFragment"
+        android:name="com.example.firstproject.ui.chat.ChatDetailFragment"
+        android:label="Chat Detail"
+        tools:layout="@layout/fragment_chat_detail">
+        <argument
+            android:name="roomName"
+            app:argType="string" />
+        <argument
+            android:name="messages"
+            app:argType="com.example.firstproject.dto.Message[]" />
+        <argument
+            android:name="studyId"
+            app:argType="string" />
+        <argument
+            android:name="count"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/aiFragment"
+        android:name="com.example.firstproject.ui.ai.AiFragment"
+        android:label="fragment_ai"
+        tools:layout="@layout/fragment_ai">
+        <action
+            android:id="@+id/action_aiFragment_to_aiFeedbackFragment2"
+            app:destination="@id/aiFeedbackFragment" />
+        <action
+            android:id="@+id/action_aiFragment_to_eyeFragment"
+            app:destination="@id/eyeFragment" />
+        <action
+            android:id="@+id/action_aiFragment_to_faceExpressionFragment"
+            app:destination="@id/faceExpressionFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/mypageFragment"
+        android:name="com.example.firstproject.ui.mypage.MypageFragment"
+        android:label="fragment_mypage"
+        tools:layout="@layout/fragment_mypage">
+        <action
+            android:id="@+id/action_mypageFragment_to_editMyPageFragment"
+            app:destination="@id/editMyPageFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/studyRegisterFragment"
+        android:name="com.example.firstproject.ui.matching.StudyRegisterFragment"
+        android:label="fragment_register_study"
+        tools:layout="@layout/fragment_register_study">
+        <action
+            android:id="@+id/action_studyRegisterFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eyeFragment"
+        android:name="com.example.firstproject.ui.ai.eye.EyeFragment"
+        android:label="EyeFragment">
+        <action
+            android:id="@+id/action_eyeFragment_to_eyeResultFragment"
+            app:destination="@id/eyeResultFragment" />
+        <action
+            android:id="@+id/action_eyeFragment_to_aiFragment"
+            app:destination="@id/aiFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/faceExpressionFragment"
+        android:name="com.example.firstproject.ui.ai.face.FaceExpressionFragment"
+        android:label="FaceExpressionFragment">
+        <action
+            android:id="@+id/action_faceExpressionFragment_to_faceResultFragment"
+            app:destination="@id/faceResultFragment" />
+        <action
+            android:id="@+id/action_faceExpressionFragment_to_aiFragment"
+            app:destination="@id/aiFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aiFeedbackFragment"
+        android:name="com.example.firstproject.ui.ai.AiFeedbackFragment"
+        android:label="fragment_ai_feedback"
+        tools:layout="@layout/fragment_ai_feedback" />
+    <fragment
+        android:id="@+id/eyeResultFragment"
+        android:name="com.example.firstproject.ui.ai.eye.EyeResultFragment"
+        android:label="fragment_eye_result"
+        tools:layout="@layout/fragment_eye_result">
+        <action
+            android:id="@+id/action_eyeResultFragment_to_aiFragment"
+            app:destination="@id/aiFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/faceResultFragment"
+        android:name="com.example.firstproject.ui.ai.face.FaceResultFragment"
+        android:label="fragment_face_result"
+        tools:layout="@layout/fragment_face_result">
+        <action
+            android:id="@+id/action_faceResultFragment_to_aiFragment"
+            app:destination="@id/aiFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editMyPageFragment"
+        android:name="com.example.firstproject.ui.mypage.EditMyPageFragment"
+        android:label="fragment_edit_my_page"
+        tools:layout="@layout/fragment_edit_my_page">
+        <action
+            android:id="@+id/action_editMyPageFragment_to_mypageFragment"
+            app:destination="@id/mypageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.example.firstproject.ui.home.notification.NotificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" >
+        <action
+            android:id="@+id/action_notificationFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/videoFragment"
+        android:name="com.example.firstproject.ui.live.VideoFragment"
+        android:label="fragment_video"
+        tools:layout="@layout/fragment_video" />
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.example.firstproject.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
+    <fragment
+        android:id="@+id/liveMainFragment"
+        android:name="com.example.firstproject.ui.live.LiveMainFragment"
+        android:label="fragment_live_main"
+        tools:layout="@layout/fragment_live_main" >
+        <action
+            android:id="@+id/action_liveMainFragment_to_videoFragment"
+            app:destination="@id/videoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/studyNotificationFragment"
+        android:name="com.example.firstproject.ui.home.studydetail.StudyNotificationFragment"
+        android:label="StudyNotificationFragment" >
+        <action
+            android:id="@+id/action_studyNotificationFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/inboxListFragment"
+        android:name="com.example.firstproject.ui.home.notification.InboxListFragment"
+        android:label="InboxListFragment" >
+        <action
+            android:id="@+id/action_inboxListFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/requestListFragment"
+        android:name="com.example.firstproject.ui.home.notification.RequestListFragment"
+        android:label="RequestListFragment" >
+        <action
+            android:id="@+id/action_requestListFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+
+
+</navigation>

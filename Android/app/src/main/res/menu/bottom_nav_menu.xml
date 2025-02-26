@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/home_filled_24"
+        android:title="홈"
+        />
+
+    <item
+        android:id="@+id/aiFragment"
+        android:icon="@drawable/ai_file_24"
+        android:title="AI"
+        />
+
+
+    <item
+        android:id="@+id/liveMainFragment"
+        android:icon="@drawable/podcasts_24"
+        android:title="라이브"
+        />
+
+    <item
+        android:id="@+id/chatFragment"
+        android:icon="@drawable/chat_24"
+        android:title="채팅"
+        />
+
+    <item
+        android:id="@+id/mypageFragment"
+        android:icon="@drawable/person_24"
+        android:title="내 정보"
+        />
+
+
+
+</menu>
