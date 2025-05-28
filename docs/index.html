@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SSAcle – SSAFY 스터디 관리 통합 앱</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0 1.2rem;
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-top: 1.6rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    th, td {
+      padding: 6px;
+      text-align: center;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      border: 0;
+    }
+    /* 고정 폭 스크린샷 */
+    img.w200 { width: 200px; }
+    /* 뱃지용 */
+    .badge { vertical-align: middle; height: 28px; }
+  </style>
+</head>
+<body>
+  <h1>SSAcle – SSAFY 생을 위한 스터디 관리 통합 앱</h1>
+
+  <h2>개요</h2>
+  <p><strong>SSAcle(싸클)</strong> 은 SSAFY 교육생뿐만 아니라 수료생까지, <em>싸피 출신이라면 누구든 참여할 수 있는 스터디 관리 통합 앱</em>입니다.</p>
+
+  <h2>개발 기간</h2>
+  <p><strong>2025‑01‑13&nbsp;~&nbsp;2025‑02‑21 (총&nbsp;6주)</strong></p>
+
+  <h2>주요 서비스</h2>
+  <ol>
+    <li><strong>스터디 개설</strong></li>
+    <li><strong>스터디 및 스터디원 매칭 서비스</strong> – 관심 주제 및 모임 요일을 기반으로 추천</li>
+    <li><strong>라이브 스터디</strong> – WebRTC 기반 실시간 스트리밍</li>
+    <li><strong>스터디 채팅방</strong> – 실시간 채팅 지원</li>
+    <li><strong>AI 자기소개서 첨삭</strong> – OpenAI API 활용</li>
+    <li><strong>AI 면접 피드백 (시선·표정 분석)</strong></li>
+  </ol>
+
+  <h2>시스템 아키텍처</h2>
+  <p>
+    <img src="https://raw.githubusercontent.com/wwwoong1/gongtongpjt/main/images/%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98.png" alt="시스템 아키텍처" />
+  </p>
+
+  <h2>기술 스택</h2>
+  <h3>Front‑End</h3>
+  <p>
+    <img class="badge" src="https://img.shields.io/badge/kotlin-%237F52FF.svg?style=for-the-badge&logo=kotlin&logoColor=white" alt="Kotlin" />
+    <img class="badge" src="https://img.shields.io/badge/android%20studio-346ac1?style=for-the-badge&logo=android%20studio&logoColor=white" alt="Android Studio" /> (LadyBug)
+  </p>
+  <h3>AI</h3>
+  <p>
+    <img class="badge" src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" alt="Python" />
+    <img class="badge" src="https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white" alt="PyTorch" />
+    <img class="badge" src="https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?style=for-the-badge&logo=TensorFlow&logoColor=white" alt="TensorFlow" />, TensorFlow&nbsp;Lite
+  </p>
+  <h3>Back‑End</h3>
+  <p>
+    <img class="badge" src="https://img.shields.io/badge/spring%20boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white" alt="Spring Boot" /> 주요 API &nbsp;
+    <img class="badge" src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js" /> 실시간 통신/미디어
+  </p>
+  <h3>Database</h3>
+  <p>
+    <img class="badge" src="https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white" alt="Redis" /> Token&nbsp;관리 &nbsp;
+    <img class="badge" src="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" /> NoSQL 데이터
+  </p>
+  <h3>Infra</h3>
+  <p>
+    <img class="badge" src="https://img.shields.io/badge/jenkins-%232C5263.svg?style=for-the-badge&logo=jenkins&logoColor=white" alt="Jenkins" />
+    <img class="badge" src="https://img.shields.io/badge/caddy-1f88c0?style=for-the-badge&logo=caddy&logoColor=white" alt="Caddy" />
+    <img class="badge" src="https://img.shields.io/badge/AWS%20EC2-ff9900?style=for-the-badge&logo=amazonec2&logoColor=white" alt="AWS EC2" />
+    <img class="badge" src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" />, Docker&nbsp;Compose
+  </p>
+  <h3>협업 &amp; 관리</h3>
+  <p>
+    <img class="badge" src="https://img.shields.io/badge/gitlab-fc6d26?style=for-the-badge&logo=gitlab&logoColor=white" alt="GitLab" /> 형상&nbsp;관리 &nbsp;
+    <img class="badge" src="https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white" alt="Notion" /> &nbsp;
+    <img class="badge" src="https://img.shields.io/badge/jira-%230A0FFF.svg?style=for-the-badge&logo=jira&logoColor=white" alt="Jira" /> 프로젝트&nbsp;관리
+  </p>
+
+  <!-- ====== 기능 스크린샷 ====== -->
+  <h2>핵심 기능 상세</h2>
+
+  <h3>1. 온보딩 &amp; 메인 화면</h3>
+  <table>
+    <tr>
+      <td><img class="w200" src="https://raw.githubusercontent.com/wwwoong1/gongtongpjt/main/images/온보딩1.png" alt="온보딩1"></td>
+      <td><img class="w200" src="https://raw.githubusercontent.com/wwwoong1/gongtongpjt/main/images/온보딩2.png" alt="온보딩2"></td>
+      <td><img class="w200" src="https://raw.githubusercontent.com/wwwoong1/gongtongpjt/main/images/온보딩3.png" alt="온보딩3"></td>
+      <td><img class="w200" src="https://raw.githubusercontent.com/wwwoong1/gongtongpjt/main/images/온보딩4.png" alt="온보딩4"></td>
+      <td><img class="w200" src="https://raw.githubusercontent.com/wwwoong1/gongtongpjt/main/images/온보딩5.png" alt="온보딩5"></td>
+    </tr>
+    <tr><td>로그인</td><td>카카오 로그인</td><td>학적 인증</td><td>닉네임 중복</td><td>정보 입력</td></tr>
+  </table>
+
+  <table>
+    <tr>
+      <td><img class="w200" src="https://raw.githubusercontent.com/wwwoong1/gongtongpjt/main/images/메인_스켈레톤UI.png" alt="스켈레톤 UI"></td>
+      <td><img class="w200" src="https://raw.githubusercontent.com/wwwoong1/gongtongpjt/main/images/메인_초기가입.png" alt="초기가입"></td>
+      <td><img class="w200" src="https://raw.githubusercontent.com/wwwoong1/gongtongpjt/main/images/메인.png" alt="메인 화면"></td>
+    </tr>
+    <tr><td>스켈레톤 UI</td><td>최초 메인</td><td>메인 화면</td></tr>
+  </table>
+  <ul>
+    <li>카카오 로그인 API + JWT 인증</li>
+    <li>가상의 학적 DB로 교육생/수료생 본인 인증</li>
+  </ul>
+
+  <h3>2. 매칭 서비스</h3>
+  <table>
+    <tr>
+      <td><img class="w200" src="https://raw.githubusercontent.com/wwwoong1/gongtongpjt/main/images/매칭_스터디원추천1.png" alt="스터디원추천1"></td>
+      <td><img class="w200" src="https://raw.githubusercontent.com/wwwoong1/gongtongpjt/main/images/매칭_스터디원추천2.png" alt="스터디원추천2"></td>
+      <td><img class="w200" src="https://raw.githubusercontent.com/wwwoong1/gongtongpjt/main/images/매칭_스터디추천.png" alt="스터디추천"></td>
+    </tr>
+    <tr><td>희망 스터디 선택</td><td>구인 결과</td><td>스터디 찾기</td></tr>
+  </table>
+  <p>필터링 + 코사인 유사도로 최적 스터디/스터디원 매칭</p>
+
+  <h3>3. 라이브 스터디</h3>
+  <table>
+    <tr>
+      <td><img class="w200" src="https://raw.githubusercontent.com/wwwoong1/gongtongpjt/main/images/라이브스터디2.png" alt="라이브스터디2"></td>
+      <td><img class="w200" src="https://raw.githubusercontent.com/wwwoong1/gongtongpjt/main/images/스터디상세.png" alt="스터디상세"></td>
+      <td><img class="w200" src="https://raw.githubusercontent.com/wwwoong1/gongtongpjt/main/images/라이브스터디.png" alt="라이브스터디"></td>
+    </tr>
+    <tr><td>Navbar 라이브</td><td>스터디 상세</td><td>라이브 스터디</td></tr>
+  </table>
+  <ul>
+    <li>WebRTC 실시간 스트리밍</li>
+    <li>MediaSoup + Socket.io 시그널링·미디어 서버</li>
+  </ul>
+
+  <h3>4. 스터디 단체 채팅방</h3>
+  <table>
+    <tr>
+      <td><img class="w200" src="https://raw.githubusercontent.com/wwwoong1/gongtongpjt/main/images/스터디채팅방.png" alt="채팅방"></td>
+      <td><img class="w200" src="https://raw.githubusercontent.com/wwwoong1/gongtongpjt/main/images/스터디채팅방_상세.png" alt="채팅방 상세"></td>
+    </tr>
+    <tr><td>Navbar 채팅</td><td>스터디 채팅방</td></tr>
+  </table>
+  <p>Socket.io + MongoDB 실시간 채팅</p>
+
+  <h3>5. AI 자기소개서 첨삭</h3>
+  <table>
+    <tr>
+      <td><img class="w200" src="https://raw.githubusercontent.com/wwwoong1/gongtongpjt/main/images/AI자소서피드백.png" alt="자소서피드백1"></td>
+      <td><img class="w200" src="https://raw.githubusercontent.com/wwwoong1/gongtongpjt/main/images/AI자소서피드백2.png" alt="자소서피드백2"></td>
+      <td><img class="w200" src="https://raw.githubusercontent.com/wwwoong1/gongtongpjt/main/images/AI자소서피드백3.png" alt="자소서피드백3"></td>
+    </tr>
+  </table>
+  <ul>
+    <li>OpenAI API 프롬프트 엔지니어링</li>
+    <li>토큰 효율화 4,500 → 1,500자</li>
+    <li>수정 부분 하이라이트 + PDF 저장</li>
+  </ul>
+
+  <h3>6. AI 면접 피드백</h3>
+  <table>
+    <tr>
+      <td><img class="w200" src="https://raw.githubusercontent.com/wwwoong1/gongtongpjt/main/images/AI시선피드백.png" alt="시선피드백"></td>
+      <td><img class="w200" src="https://raw.githubusercontent.com/wwwoong1/gongtongpjt/main/images/AI표정피드백1.png" alt="표정피드백1"></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <img class="w200" src="https://raw.githubusercontent.com/wwwoong1/gongtongpjt/main/images/AI표정피드백2.png" alt="표정피드백2" />
+        <img class="w200" src="https://raw.githubusercontent.com/wwwoong1/gongtongpjt/main/images/AI표정피드백3.png" alt="표정피드백3" />
+        <img class="w200" src="https://raw.githubusercontent.com/wwwoong1/gongtongpjt/main/images/AI시선피드백2.png" alt="시선피드백2" />
+        <img class="w200" src="https://raw.githubusercontent.com/wwwoong1/gongtongpjt/main/images/AI표정피드백4.png" alt="표정피드백4" />
+        <img class="w200" src="https://raw.githubusercontent.com/wwwoong1/gongtongpjt/main/images/AI표정피드백5.png" alt="표정피드백5" />
+      </td>
+    </tr>
+  </table>
+  <ul>
+    <li>YOLOv8n 기반 표정·동공 감지</li>
+    <li>응시 비율 계산·피드백 PNG 제공</li>
+    <li>온디바이스 최적화: 9초 영상 분석 100초 → 7초</li>
+  </ul>
+
+  <h2>팀원</h2>
+  <table>
+    <tr><th>역할</th><th>이름</th></tr>
+    <tr><td>Android</td><td>이호정, 장홍준, 정찬우</td></tr>
+    <tr><td>BackEnd</td><td>김민주, 이문경</td></tr>
+    <tr><td>AI</td><td>김웅기, 이호정</td></tr>
+    <tr><td>WebRTC</td><td>정찬우</td></tr>
+    <tr><td>Infra</td><td>장홍준</td></tr>
+  </table>
+
+  <h2>요구 사항</h2>
+  <ul>
+    <li><a href="https://www.notion.so/0f095bdffce24ece9c096314463bc30d?pvs=21" target="_blank" rel="noopener">API 명세서</a></li>
+    <li><a href="https://www.notion.so/e4c9075a2b574e7888fff138a5b2d5ea?pvs=21" target="_blank" rel="noopener">스키마</a></li>
+  </ul>
+
+  <h3>외부 API</h3>
+  <ul>
+    <li>카카오 로그인 API</li>
+    <li>OpenAI API</li>
+    <li>Firebase Cloud Message</li>
+  </ul>
+
+  <h3>배포 &amp; 개발 환경</h3>
+  <ul>
+    <li>CI/CD – Jenkins, Docker, Docker Compose</li>
+  </ul>
+
+  <h2>Git 컨벤션</h2>
+  <h3>1. Issue 등록</h3>
+  <p><em>[Part/Type] 이슈 제목</em> – 예) <code>[Android/Feat] 기능 개발</code></p>
+  <h3>2. Branch 생성</h3>
+  <p><em>type/#issue_number</em> – 예) <code>feat/#3</code></p>
+  <h3>3. Commit</h3>
+  <p><em>branch이름 : commit 제목</em> – 예) <code>feat/#3 : example 기능 구현</code></p>
+  <h3>4. Merge Request</h3>
+  <p><em>[Part/Type] MR 제목</em> – 예) <code>[BE/Fix] 기능 수정</code></p>
+
+  <footer style="margin:3rem 0 1rem;text-align:center;font-size:0.8rem;color:#888;">
+    © 2025 SSAcle Team
+  </footer>
+</body>
+</html>
