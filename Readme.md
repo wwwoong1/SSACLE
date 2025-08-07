@@ -192,5 +192,12 @@ commit은 issue 등록할 때 to-do 리스트에 작성한 내용마다 하는 �
   - 표정 분석 및 동공 움직임 분석 모델을 개발해 사용자에 피드백을 제공
 - 🎨 **Figma를 활용한 FE 디자인 목업**
   - Figma를 활용해 AI 기능 페이지 UI 목업
+- **성과**
+  - AI 모델 예측 성능 개선 : recall은 소폭 감소했으나, precision, mAP는 성능이 개선됨
+    - 초기 성능 : recall 0.87 / precision 0.7 / mAP 0.78 / mAP50-95 0.44
+    - 개선 후 성능 :  recall 0.8 / precision 0.8 / mAP 0.83 / mAP50-95 0.5
+  - AI 모델 학습 성능 개선 : Augmentation, 학습 데이터 추가로 cls_loss / box_loss 값 개선
+    - 초기 학습 : box_loss 0.6 / class_loss 0.3
+    - 개선 후 : box_loss 0.2 / class_loss 0.1
 
 > 💡 AI 핵심 기능과 사용자 인터페이스 흐름을 설계 및 구현하여 프로젝트의 기술적 차별성과 사용성 향상에 기여
